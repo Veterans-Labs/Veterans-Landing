@@ -4,45 +4,45 @@
 
 <footer class="absolute bottom-0 left-0 w-full flex flex-col items-center justify-center py-10 px-4 text-center z-50">
    
-    <!-- Línea decorativa -->
+ 
     <div class="absolute top-[30%] left-0 w-full h-1 bg-black -translate-y-1/2 z-0"></div>
 
-    <!-- Íconos de redes sociales -->
+   
     <div class="relative flex gap-6 mb-6 z-10">
         <img 
             src="/images/Icono_X.svg" 
             alt="X"
-            class="w-10 h-10 cursor-pointer bg-[#FBBF31] border border-black rounded-md border-b-[6px] border-r-[5px] p-[4px] transition-all hover:scale-110 hover:bg-white"
-            onclick="handleRedirect('https://twitter.com/veterans_crew')" 
+            class="w-10 h-10 cursor-pointer bg-[#FBBF31] border border-black rounded-md border-b-[6px] border-r-[5px] p-[4px] transition-all hover:scale-110 hover:bg-gray-300"
+            data-url='https://twitter.com/veterans_crew' 
         />
         <img 
             src="/images/Icono_Discor.svg" 
             alt="Discord"
-            class="w-10 h-10 cursor-pointer bg-[#FBBF31] border border-black rounded-md border-b-[6px] border-r-[5px] p-[4px] transition-all hover:scale-110 hover:bg-white"
-            onclick="handleRedirect('https://discord.com/invite/veterans')" 
+            class="w-10 h-10 cursor-pointer bg-[#FBBF31] border border-black rounded-md border-b-[6px] border-r-[5px] p-[4px] transition-all hover:scale-110 hover:bg-gray-300"
+            data-url='https://discord.gg/2RXHF6Tw7a' 
         />
         <img 
             src="/images/drip.png" 
             alt="Drip" 
-            class="w-10 h-10 cursor-pointer bg-[#FBBF31] border border-black rounded-md border-b-[6px] border-r-[5px] p-[4px] transition-all hover:scale-110 hover:bg-white"
-            onclick="handleRedirect('https://exchange.art/veterans/nfts')" 
+            class="w-10 h-10 cursor-pointer bg-[#FBBF31] border border-black rounded-md border-b-[6px] border-r-[5px] p-[4px] transition-all hover:scale-110 hover:bg-gray-300"
+            data-url='https://drip.haus/veterans'
         />
         <img 
             src="/images/Icono_Atlas.svg" 
             alt="Atlas" 
-            class="w-10 h-10 cursor-pointer bg-[#FBBF31] border border-black rounded-md border-b-[6px] border-r-[5px] p-[4px] transition-all hover:scale-110 hover:bg-white"
-            onclick="handleRedirect('https://atlas3.io/project/veterans')" 
+            class="w-10 h-10 cursor-pointer bg-[#FBBF31] border border-black rounded-md border-b-[6px] border-r-[5px] p-[4px] transition-all hover:scale-110 hover:bg-gray-300"
+            data-url='https://atlas3.io/project/veterans' 
         />
     </div>
 
-    <!-- Enlaces -->
+    
     <div class="text-black font-bold text-sm mb-4">
         <a href="/" class="hover:text-gray-200 transition">HOME</a> / 
-        <a href="/linking" class="hover:text-gray-200 transition">LABS</a> / 
+        <a href="/labs" class="hover:text-gray-200 transition">LABS</a> / 
         <a href="/inventory" class="hover:text-gray-200 transition">VAULT</a>
     </div>
 
-    <!-- Información legal -->
+   
     <div class="flex items-center gap-3 text-black text-xs">
         <img class="w-6 h-auto" src="/images/Isotipo_Negro.svg" alt="Veterans Logo" />
         <p>&copy; 2025 Veterans. All rights reserved.</p>
@@ -50,8 +50,19 @@
 </footer>
 
 <script>
-function handleRedirect(url:string) {
-    const newWindow = window.open(url, '_blank');
-    if (newWindow) newWindow.opener = null;
-}
+
+document.addEventListener("DOMContentLoaded", () => {
+    function handleRedirect(url:string) {
+        const newWindow = window.open(url, '_blank');
+        if (newWindow) newWindow.opener = null;
+    }
+
+    
+    document.querySelectorAll("img[data-url]").forEach(img => {
+        img.addEventListener("click", function (this:any) {
+            handleRedirect(this.dataset.url);
+        });
+    });
+});
+
 </script>
