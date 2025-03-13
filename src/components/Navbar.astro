@@ -1,21 +1,71 @@
 ---
-
-
+// Importaciones de Astro y scripts necesarios
 ---
-<nav class="relative flex items-center justify-center w-full py-4 border-b-3 border-gray-800 mt-3 shadow-md ">
-    <div class="flex items-center text-black font-bold text-lg ">
-        <a href="https://veterans-tools.solsuite.io/staking" 
-           class="px-6 py-1 border-l-3 border-black ml-4 hover:text-gray-300">
+
+  
+<nav class="relative flex items-center justify-between w-full py-4 border-b-3 border-gray-800 mt-3 shadow-md px-4">
+    
+    <div class="flex items-center">
+        <a href="/">
+            <img src="/images/Isotipo_Negro.svg" alt="logoVeterans" width="37" height="31" class="cursor-pointer" />
+        </a>
+    </div>
+    
+    <!-- desktop menu -->
+    <div class="hidden md:flex md:absolute md:left-1/2 md:-translate-x-1/2">
+        <div class="flex items-center text-black font-bold text-lg">
+            <a href="#" 
+               class="px-6 py-1 border-l-3 border-black ml-4 hover:text-gray-300 transition-colors">
+                MANIFIESTO
+            </a>
+            <a href="#" 
+               class="px-6 py-1 border-l-3 border-black border-r-3 hover:text-gray-300 transition-colors">
+                VAULT
+            </a>
+            <a href="#" 
+               class="px-6 py-1 border-black border-r-3 hover:text-gray-300 transition-colors">
+                GALLERY
+            </a>
+        </div>
+    </div>
+    
+    <!-- toggle button -->
+    <div class="block md:hidden">
+        <button id="menuToggle" class="flex items-center px-3 py-2 border-2 rounded text-black border-black hover:bg-gray-300  hover:border-black">
+            <svg class="fill-current h-5 w-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+<!-- mobile menu -->
+<div id="mobileMenu" class="hidden fixed top-17 left-0 right-0 bg-[#fdc749] bg-opacity-50 backdrop-blur-sm z-50 shadow-lg md:hidden">
+    <div class="flex flex-col items-center text-black font-bold text-lg">
+        <a href="#" 
+           class="px-4 py-3 w-full text-center border-b border-t border-black hover:bg-gray-300 hover:bg-opacity-10 transition-colors">
+            MANIFIESTO
+        </a>
+        <a href="#" 
+           class="px-4 py-3 w-full text-center border-b border-black hover:bg-gray-300 hover:bg-opacity-10 transition-colors">
             VAULT
         </a>
         <a href="#" 
-           class="px-6 py-1 border-l-3 border-black border-r-3 hover:text-gray-300">
-            VETERANS LABS
+           class="px-4 py-3 w-full text-center border-b border-black hover:bg-gray-300 hover:bg-opacity-10 transition-colors">
+            GALLERY
         </a>
     </div>
-    <div class="absolute left-4">
-        <a href="/">
-            <img src="/images/Isotipo_Negro.svg" alt="logoVeterans" width="37" height="31" class="cursor-pointer mb-1" />
-        </a>
-    </div>
-</nav>
+</div>
+
+  <script>
+    // toggle mobile button
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      menuToggle?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    });
+  </script>
