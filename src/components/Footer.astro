@@ -43,3 +43,16 @@
         <p>&copy; 2025 Veterans. All rights reserved.</p>
     </div>
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("img[data-url]").forEach(img => {
+            img.addEventListener("click", function (this: HTMLImageElement) {
+                const url = this.getAttribute("data-url");
+                if (url) {
+                    window.open(url, "_blank");
+                }
+            });
+        });
+    });
+</script>
