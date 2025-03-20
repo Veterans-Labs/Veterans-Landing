@@ -4,10 +4,12 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-    <div class="relative w-full h-screen bg-cover flex flex-col items-center justify-center 
-                bg-[position:40%_center] lg:bg-center
-                bg-[url('/images/Fire_light.gif')] lg:bg-[url('/images/Veterans_BURN_bucle.gif')]">
-        
-        <ButtonsGif />
+    <div class="relative w-full h-screen bg-cover bg-center flex flex-col items-center justify-center">
+        <div class="absolute inset-0 w-[95%] h-full ml-[2.5%]">
+            <img src="/images/LOGOTIPO_GRAY.png" 
+                 class="w-full h-full object-contain object-[center_40%]" 
+                 alt="Logotipo" />
+        </div>
+        <ButtonsGif class="relative z-10" />
     </div>
 </Layout>
