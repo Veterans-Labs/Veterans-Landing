@@ -22,8 +22,10 @@ interface Props {
 	</head>
 	<body class="min-h-screen flex flex-col">
 		<Navbar />
-		<slot/>
-		<Footer class="w-full mt-auto z-0"/>
+		<main class="flex-grow flex flex-col !mb-0 !pb-0">
+			<slot/>
+		</main>
+		<Footer class="!mt-0 !pt-0 !pb-0" />
 	</body>
 	
 </html>
@@ -36,5 +38,6 @@ interface Props {
 		height: 100%;
 		background-color: #FBBF31;
 		font-family: "MonumentExtended", sans-serif;
+		padding: 0;
 	}
 </style>
