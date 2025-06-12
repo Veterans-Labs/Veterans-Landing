@@ -1,54 +1,62 @@
 ---
+import ManifestoPanel from './ManifestoPanel.astro';
 
 ---
 
   
-<nav class="relative flex items-center justify-between w-full py-4 border-b-3 border-gray-800 mt-3 shadow-md px-4">
-    
+<nav class="relative flex items-center justify-between w-full py-4 border-b-3 border-black mt-0 shadow-md px-4 bg-[#FBBF31]">
     <div class="flex items-center">
         <a href="/">
             <img src="/images/Isotipo_Negro.svg" alt="logoVeterans" width="37" height="31" class="cursor-pointer" />
         </a>
     </div>
-    
-    <!-- desktop menu -->
+    <!-- Menú centrado en desktop -->
     <div class="hidden md:flex md:absolute md:left-1/2 md:-translate-x-1/2">
-        <div class="flex items-center text-black font-bold text-lg">
+        <div class="flex items-center text-black font-bold text-lg tracking-wide">
             <a href="#" 
-               class="px-6 py-1 border-l-3 border-black ml-4 hover:text-gray-300 transition-colors">
-                MANIFESTO
-            </a>
-            <a href="#" 
-               class="px-6 py-1 border-l-3 border-black border-r-3 hover:text-gray-300 transition-colors">
+               class="px-6 py-1 border-l-3 border-black ml-4 hover:text-gray-700 transition-colors">
                 VAULT
             </a>
+            <span class="border-l-3 border-black h-6 mx-2"></span>
             <a href="#" 
-               class="px-6 py-1 border-black border-r-3 hover:text-gray-300 transition-colors">
+               class="px-6 py-1 border-black hover:text-gray-700 transition-colors">
                 GALLERY
             </a>
+            <span class="border-l-3 border-black h-6 mx-2"></span>
         </div>
     </div>
-    
-    <!-- toggle button -->
-    <div class="block md:hidden">
-        <button id="menuToggle" class="flex items-center px-3 py-2 border-2 rounded text-black border-black hover:bg-gray-300  hover:border-black">
-            <svg class="fill-current h-5 w-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <title>Menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+    <!-- Icono a la derecha (simulando botón de lista) -->
+    <div class="flex items-center">
+        <button id="menuToggle" class="flex items-center px-2 py-2 border-2 rounded text-black border-black hover:bg-gray-300 hover:border-black md:hidden">
+            <svg class="fill-current h-6 w-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="4" width="14" height="3" rx="1"/>
+                <rect x="5" y="10.5" width="14" height="3" rx="1"/>
+                <rect x="5" y="17" width="14" height="3" rx="1"/>
             </svg>
         </button>
+        <div class="hidden md:block ml-4">
+            <div
+                class="bg-[#FBBF31] rounded p-0.5 cursor-pointer"
+                style="display: inline-block; border: 2px solid black; box-shadow: 4px 6px 0 0 black;"
+                onclick="window.openManifestoPanel && window.openManifestoPanel()"
+            >
+                <svg width="28" height="36" viewBox="0 0 44 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="6" width="40" height="47" rx="4" fill="#FBBF31" stroke="black" stroke-width="3.5"/>
+                    <rect x="12" y="2" width="20" height="8" rx="4" fill="#FBBF31" stroke="black" stroke-width="3.5"/>
+                    <line x1="13" y1="20" x2="31" y2="20" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+                    <line x1="13" y1="28" x2="31" y2="28" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+                    <line x1="13" y1="36" x2="25" y2="36" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
     </div>
 </nav>
 
-<!-- mobile menu -->
-<div id="mobileMenu" class="hidden fixed top-17 left-0 right-0 mt-1 bg-[#fdc749] bg-opacity-50 backdrop-blur-sm z-50 shadow-lg md:hidden">
+<!-- Menú móvil -->
+<div id="mobileMenu" class="hidden fixed top-17 left-0 right-0 mt-1 bg-[#fdc749] bg-opacity-95 backdrop-blur-sm z-50 shadow-lg md:hidden border-t-3 border-black">
     <div class="flex flex-col items-center text-black font-bold text-lg">
         <a href="#" 
            class="px-4 py-3 w-full text-center border-b border-t border-black hover:bg-gray-300 hover:bg-opacity-10 transition-colors">
-            MANIFIESTO
-        </a>
-        <a href="#" 
-           class="px-4 py-3 w-full text-center border-b border-black hover:bg-gray-300 hover:bg-opacity-10 transition-colors">
             VAULT
         </a>
         <a href="#" 
@@ -69,3 +77,5 @@
       });
     });
   </script>
+
+<ManifestoPanel />

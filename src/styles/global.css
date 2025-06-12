@@ -1,16 +1,34 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 @font-face {
-    font-family: "MonumentExtended";
-    src: url("/fonts/MonumentExtended-Regular.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
+  font-family: "MonumentExtended";
+  src: url("/fonts/MonumentExtended-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fdc749;
-    font-family: "MonumentExtended", sans-serif;
+@font-face {
+  font-family: "Pixeled";
+  src: url("/fonts/Pixeled.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fdc749;
+  font-family: "MonumentExtended", sans-serif;
+}
+
+.pixel-font {
+  font-family: "Press Start 2P", cursive;
+}
+
+.pixeled-font {
+  font-family: "Pixeled", monospace;
 }

@@ -1,15 +1,18 @@
 ---
-import ButtonsGif from '../components/ButtonsGif.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-    <div class="relative w-full h-full bg-cover bg-center flex flex-col items-center justify-center">
-        <div class="absolute inset-0 w-[90%] sm:w-[85%] md:w-[75%] lg:w-[70%] h-[80%] sm:h-[75%] md:h-[80%] lg:h-full ml-[5%] sm:ml-[7.5%] md:ml-[12.5%] lg:ml-[15%]">
-            <img src="/images/LOGOTIPO_BLACK.png" 
-                 class="w-full h-full object-contain object-[center_20%] lg:object-[center_5%] xxl:object-[center_0%]" 
-                 alt="Logotipo" />
-        </div>
-        <ButtonsGif />
-    </div>
+  <main class="relative w-full h-full overflow-hidden">
+    <video 
+      autoplay 
+      loop 
+      muted 
+      playsinline
+      class="absolute top-0 left-0 bottom-[-100px] right-0 w-full h-full object-cover z-0"
+    >
+      <source src="/videos/FRONT_VIDEO.mp4" type="video/mp4">
+      Tu navegador no soporta el elemento de video.
+    </video>
+  </main>
 </Layout>
