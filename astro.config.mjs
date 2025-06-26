@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://veterans-labs.github.io/Veterans-Landing/',
   vite: {
     plugins: [tailwindcss()]
   }
