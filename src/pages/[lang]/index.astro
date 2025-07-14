@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import en from "../../i18n/en";
+import es from "../../i18n/es";
+import hi from "../../i18n/hi";
+import zh from "../../i18n/zh";
+import type { Language } from "../../types/language.type";
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }, { params: { lang: "hi" } }, { params: { lang: "zh" } }];
+}
+
+export const defaultRedirect = "/en";
+
+const lang = Astro.params.lang as Language;
+const translations = { en, es, hi, zh };
+const t = translations[lang];
+---
+
+<Layout lang={lang} t={t}></Fragment>
+  <main class="relative w-full h-full overflow-hidden">
+    <video 
+      autoplay 
+      loop 
+      muted 
+      playsinline
+      class="absolute top-0 left-0 bottom-[-100px] right-0 w-full h-full object-cover z-0"
+    >
+      <source src="/videos/FRONT_VIDEO.mp4" type="video/mp4">
+      {t.video.notSupported}
+    </video>
+  </main>
+</Layout>

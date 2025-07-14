@@ -4,15 +4,32 @@ import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 
 interface Props {
-  title?: string;
-  description?: string;
-  image?: string;
+    lang: string;
+    t: {
+        languageLabel: string;
+        languageOptions: Record<string, string>;
+        navbar: Record<string, string>;
+        footer: Record<string, string>;
+        manifesto: Record<string, any>;
+    };
+	title?: string;
+	description?: string;
+	image?: string;
 }
+
+const { lang, t } = Astro.props;
+
+const languages = [
+  { code: "en", label: t.languageOptions.en },
+  { code: "es", label: t.languageOptions.es },
+  { code: "hi", label: t.languageOptions.hi },
+  { code: "zh", label: t.languageOptions.zh },
+];
 ---
 
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -21,11 +38,11 @@ interface Props {
 		<title>Veterans Crew</title>
 	</head>
 	<body class="min-h-screen flex flex-col">
-		<Navbar />
+		<Navbar lang={lang} t={t} languages={languages} />
 		<main class="flex-grow flex flex-col !mb-0 !pb-0">
 			<slot/>
 		</main>
-		<Footer class="!mt-0 !pt-0 !pb-0" />
+		<Footer lang={lang} t={t} languages={languages} class="!mt-0 !pt-0 !pb-0" />
 	</body>
 	
 </html>
@@ -37,7 +54,7 @@ interface Props {
 		width: 100%;
 		height: 100%;
 		background-color: #FBBF31;
-		font-family: "MonumentExtended", sans-serif;
+		font-family: "MonumentExtended", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 		padding: 0;
 	}
 </style>

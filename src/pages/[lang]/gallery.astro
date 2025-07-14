@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import en from "../../i18n/en";
+import es from "../../i18n/es";
+import hi from "../../i18n/hi";
+import zh from "../../i18n/zh";
+import type { Language } from "../../types/language.type";
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }, { params: { lang: "hi" } }, { params: { lang: "zh" } }];
+}
+
+export const defaultRedirect = "/en";
+
+const lang = Astro.params.lang as Language;
+const translations = { en, es, hi, zh };
+const t = translations[lang];
+---
+
+<Layout lang={lang} t={t}>
+    <p class="text-black text-center text-4xl mt-4 font-extrabold font-monument">{t.gallery.thisIs}</p>
+    <img src="/images/LOGOTIPO_GRAY.png" alt="Gallery" class="w-89 md:w-120 lg:w-160 h-auto mx-auto mt-4" />
+</Layout>

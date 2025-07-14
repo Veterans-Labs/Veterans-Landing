@@ -1,5 +1,16 @@
 ---
+interface Props {
+    lang: string;
+    t: {
+        languageLabel: string;
+        languageOptions: Record<string, string>;
+        navbar: Record<string, string>;
+        footer: Record<string, string>;
+    };
+    languages: { code: string; label: string }[];
+}
 
+const { lang, t, languages } = Astro.props as Props;
 ---
 
 <footer class="w-full flex flex-col items-center justify-center  text-center z-2 shadow-md relative">
@@ -33,13 +44,13 @@
     </div>
 
     <div class="text-black font-bold text-xs mb-2">
-       <a href="/" class="hover:text-gray-200 transition">VAULT</a> /
-        <a href="/gallery" class="hover:text-gray-200 transition">GALLERY</a> 
+       <a href="/" class="hover:text-gray-200 transition">{t.footer.vault}</a> /
+        <a href="/gallery" class="hover:text-gray-200 transition">{t.footer.gallery}</a> 
     </div>
 
-    <div class="flex items-center gap-2 text-black text-[10px]">
+    <div class="flex items-center gap-2 text-black text-[10px] pb-2">
         <img class="w-5 h-auto" src="/images/Isotipo_Negro.svg" alt="Veterans Logo" />
-        <p>&copy; 2025 Veterans. All rights reserved.</p>
+        <p>{t.footer.rights}</p>
     </div>
 </footer>
 
