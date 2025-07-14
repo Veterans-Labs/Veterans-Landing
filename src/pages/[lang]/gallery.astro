@@ -1,15 +1,20 @@
 ---
+// gallery.astro
 import Layout from '../../layouts/Layout.astro';
 import en from "../../i18n/en";
 import es from "../../i18n/es";
 import hi from "../../i18n/hi";
 import zh from "../../i18n/zh";
 import type { Language } from "../../types/language.type";
-export function getStaticPaths() {
-  return [{ params: { lang: "en" } }, { params: { lang: "es" } }, { params: { lang: "hi" } }, { params: { lang: "zh" } }];
-}
 
-export const defaultRedirect = "/en";
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+    { params: { lang: "hi" } },
+    { params: { lang: "zh" } }
+  ];
+}
 
 const lang = Astro.params.lang as Language;
 const translations = { en, es, hi, zh };
@@ -17,6 +22,42 @@ const t = translations[lang];
 ---
 
 <Layout lang={lang} t={t}>
-    <p class="text-black text-center text-4xl mt-4 font-extrabold font-monument">{t.gallery.thisIs}</p>
-    <img src="/images/LOGOTIPO_GRAY.png" alt="Gallery" class="w-89 md:w-120 lg:w-160 h-auto mx-auto mt-4" />
+  <section class="text-center mt-6">
+    <h1 class="text-black text-center text-4xl mt-4 font-extrabold font-monument">{t.gallery.thisIs}</h1>
+    <img src="/images/LOGOTIPO_BLACK.png" alt="Gallery" class="w-89 md:w-120 lg:w-160 h-auto mx-auto mt-4" />
+  </section>
+
+  <div class="gallery-container mt-10 px-12">
+    <!-- Segundo container (imagen) -->
+    <img src="/images/gallery/CONTENEDOR_SNAPSHOOT.png" alt="Saga Snapshot" class="gallery-block" />
+
+    <!-- Primer container (video) -->
+      <video autoplay loop muted playsinline class="gallery-block">
+        <source src="/images/gallery/contenedor_3_1.mp4" type="video/mp4" />
+        {t.video.notSupported}
+      </video>
+  </div>
 </Layout>
+
+<style>
+  .gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery-block {
+    display: block;         /* Evita espacios fantasmas de inline elements */
+    margin: 0;              /* Elimina márgenes por defecto */
+    padding: 0;             /* Elimina padding residual */
+    max-width: 100%;        /* Respetar tamaño sin desbordar */
+    height: auto;           /* Mantener proporción original */
+    box-sizing: border-box; /* Garantiza que no se sumen paddings inesperados */
+  }
+
+  .gallery-block video {
+    vertical-align: top; /* Asegura alineación con imagenes */
+    margin-bottom: -2px;
+  }
+
+</style>

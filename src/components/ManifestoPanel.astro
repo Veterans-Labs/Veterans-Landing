@@ -21,7 +21,7 @@ const { lang, t, languages } = Astro.props as Props;
         <h2 class="pixeled-font font-bold text-lg md:text-xl leading-loose text-black mt-2" style="word-break: keep-all;">{t.manifesto.title}</h2>
       </div>
     </div>
-    <button id="closeManifesto" class="bg-[#FBBF31] text-black text-xs font-bold p-1 rounded border-2 border-black hover:bg-gray-300 transition absolute top-4 right-5" style="box-shadow: 2px 2px 0 0 black;">X</button>
+    <button id="closeManifesto" class="bg-[#FFBF0F] text-black text-xs font-bold p-1 rounded border-2 border-black hover:bg-gray-300 transition absolute top-4 right-5" style="box-shadow: 2px 2px 0 0 black;">X</button>
   </div>
   <div class={`ml-3 p-2 text-black leading-loose pixeled-font ${lang === 'zh' || lang === 'hi' ? 'text-[10.25px]' : 'text-[6.25px]'}`}>
     <p class="font-bold mb-4">{t.manifesto.welcome}</p>
