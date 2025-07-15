@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import en from "../../i18n/en";
+import es from "../../i18n/es";
+import hi from "../../i18n/hi";
+import zh from "../../i18n/zh";
+import nfts from "../../data/nfts.json";
+import type { Language } from "../../types/language.type";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+    { params: { lang: "hi" } },
+    { params: { lang: "zh" } }
+  ];
+}
+
+const lang = Astro.params.lang as Language;
+const translations = { en, es, hi, zh };
+const t = translations[lang];
+
+// Unique trait types for sidebar
+const traitTypes = Array.from(new Set(nfts.flatMap(nft => nft.traits.map(trait => trait.type))));
+---
+
+<Layout lang={lang} t={t}>
+  <div class="flex flex-col md:flex-row text-black min-h-screen">
+    <!-- Sidebar Filters -->
+    <aside class="w-full md:w-1/6 p-4 border-r border-gray-800">
+      <h2 class="text-yellow-800 text-xl mb-4">FILTER</h2>
+      <div class="space-y-2">
+        {traitTypes.map(category => (
+          <details class="border-b border-gray-800">
+            <summary class="cursor-pointer py-2 flex justify-between items-center">
+              <span>{category}</span>
+              <span>+</span>
+            </summary>
+            <div class="pl-4 text-sm text-gray-700">
+              {nfts.flatMap(nft => nft.traits)
+                  .filter(trait => trait.type === category)
+                  .map(trait => trait.value)
+                  .filter((value, index, arr) => arr.indexOf(value) === index)
+                  .map(value => (
+                    <div class="py-1">
+                      <input type="checkbox" id={`${category}-${value}`} class="mr-2" />
+                      <label for={`${category}-${value}`}>{value}</label>
+                    </div>
+              ))}
+            </div>
+          </details>
+        ))}
+      </div>
+    </aside>
+
+    <!-- NFT Grid -->
+    <main class="flex-1 p-4">
+      <h1 class="text-3xl font-bold mb-4">VETERANS VAULT</h1>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {nfts.map(nft => (
+          <div class="bg-black border border-ablack rounded-lg overflow-hidden hover:shadow-lg transition">
+            <img src={nft.image} alt={nft.name} class="w-full aspect-square object-cover" />
+            <div class="p-2 text-center">
+              <span class="block font-semibold text-white">{nft.name}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
+  </div>
+</Layout>
