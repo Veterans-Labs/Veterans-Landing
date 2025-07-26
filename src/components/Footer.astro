@@ -8,12 +8,13 @@ interface Props {
         footer: Record<string, string>;
     };
     languages: { code: string; label: string }[];
+    class?: string;
 }
 
-const { lang, t, languages } = Astro.props as Props;
+const { lang, t, languages, class: className } = Astro.props as Props;
 ---
 
-<footer class="w-full flex flex-col items-center justify-center  text-center z-2 shadow-md relative">
+<footer class={`w-full flex flex-col items-center justify-center text-center z-2 shadow-md relative ${className || ''}`}>
     <div class="absolute top-[0px] left-0 w-full h-1 bg-black mb-4"></div>
 
     <div class="relative flex gap-2 mb-2 z-0 top-[-10px]">
@@ -50,7 +51,7 @@ const { lang, t, languages } = Astro.props as Props;
 
     <div class="flex items-center gap-2 text-black text-[10px] pb-2">
         <img class="w-5 h-auto" src="/images/Isotipo_Negro.svg" alt="Veterans Logo" />
-        <p>{t.footer.rights}</p>
+        <p class="font-monument">{t.footer.rights}</p>
     </div>
 </footer>
 

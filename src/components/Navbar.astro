@@ -28,13 +28,15 @@ const { lang, t, languages } = Astro.props as Props;
   <!-- Menú centrado en desktop -->
   <div class="hidden md:flex md:absolute md:left-1/2 md:-translate-x-1/2">
     <div class="flex items-center text-black font-bold text-lg tracking-wide">
-      <a href={`/${lang}/vault`} class="px-6 py-1 border-l-3 border-black ml-4 hover:text-gray-700 transition-colors">
+      <span class="border-l-3 border-black h-8 mx-2"></span>
+      <a href={`/${lang}/vault`} class="px-6 py-1 hover:text-gray-700 transition-colors">
         {t.navbar.vault}
       </a>
-      <span class="border-l-3 border-black h-6 mx-2"></span>
-      <a href={`/${lang}/gallery`} class="px-6 py-1 border-black hover:text-gray-700 transition-colors">
+      <span class="border-l-3 border-black h-8 mx-2"></span>
+      <a href={`/${lang}/gallery`} class="px-6 py-1 hover:text-gray-700 transition-colors">
         {t.navbar.gallery}
       </a>
+      <span class="border-l-3 border-black h-8 mx-2"></span>
     </div>
   </div>
 
@@ -53,7 +55,7 @@ const { lang, t, languages } = Astro.props as Props;
     </select>
 
     <!-- Botón menú móvil -->
-    <button id="menuToggle" class="flex items-center px-2 py-2 border-2 rounded text-black border-black hover:bg-gray-300 hover:border-black md:hidden">
+    <button id="menuToggle" class="flex items-center px-2 py-2 border-2 rounded text-black border-black hover:bg-gray-300 hover:border-black md:hidden ml-3" style="box-shadow: 4px 6px 0 0 black;">
         <svg class="fill-current h-6 w-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <rect x="5" y="4" width="14" height="3" rx="1"/>
             <rect x="5" y="10.5" width="14" height="3" rx="1"/>
@@ -128,5 +130,4 @@ const { lang, t, languages } = Astro.props as Props;
         });
     });
   </script>
-
 <ManifestoPanel lang={lang} t={t} languages={languages} />

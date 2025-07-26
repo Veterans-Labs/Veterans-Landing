@@ -1,9 +1,23 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import "tailwindcss";
 
 @font-face {
   font-family: "MonumentExtended";
   src: url("/fonts/MonumentExtended-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MonumentExtended";
+  src: url("/fonts/MonumentExtended-Ultrabold.ttf") format("truetype");
+  font-weight: ultrabold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MonumentExtendedUltraBold";
+  src: url("/fonts/MonumentExtended-Ultrabold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -35,4 +49,10 @@ body {
 
 .font-monument {
   font-family: "MonumentExtended", sans-serif !important;
+}
+
+.font-monument-ultra {
+  font-family: "MonumentExtendedUltraBold", "MonumentExtended", sans-serif !important;
+  font-weight: normal !important;
+  text-transform: uppercase;
 }
